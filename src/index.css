@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-[#FAF8F3] text-[#111111] font-sans antialiased;
+    font-size: 16px;
+    overflow-x: hidden;
+    width: 100%;
+    touch-action: manipulation;
+  }
+
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    @apply bg-[#D4AF37]/30 text-[#111111];
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-[#111111];
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C6A15B 0%, #9C7B3C 50%, #7D5E24 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(198, 161, 91, 0.35), transparent);
+  }
+
+  .container-px {
+    @apply px-4 sm:px-8 lg:px-12;
+  }
+
+  /* Efeito sutil de luz atravessando o gelo cristalino */
+  .ice-refraction-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ice-refraction-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 55%
+    );
+    transform: rotate(25deg) translateY(-100%);
+    transition: transform 0.75s ease-in-out;
+    pointer-events: none;
+  }
+
+  .ice-refraction-card:hover::after {
+    transform: rotate(25deg) translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
