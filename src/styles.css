@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+/* Tokens extraídos do stylesheet original (Lovable / Tailwind v4). */
+:root {
+  --radius: 0.25rem;
+  --background: oklch(11.5% 0.005 70);
+  --foreground: oklch(94% 0.01 80);
+  --card: oklch(16% 0.009 70);
+  --card-foreground: oklch(94% 0.01 80);
+  --primary: oklch(72% 0.12 75);
+  --primary-bright: oklch(80% 0.13 78);
+  --primary-foreground: oklch(13% 0.01 70);
+  --secondary: oklch(22% 0.015 70);
+  --secondary-foreground: oklch(94% 0.01 80);
+  --muted: oklch(20% 0.01 70);
+  --muted-foreground: oklch(70% 0.018 75);
+  --accent: oklch(27% 0.035 72);
+  --accent-foreground: oklch(94% 0.01 80);
+  --surface-raised: oklch(18.5% 0.012 68);
+  --gold-muted: oklch(63% 0.085 73);
+  --border: oklch(35% 0.035 72);
+  --input: oklch(28% 0.02 72);
+  --ring: oklch(72% 0.12 75);
+}
+
+@theme inline {
+  --font-sans: 'Montserrat', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-bright: var(--primary-bright);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-surface-raised: var(--surface-raised);
+  --color-gold-muted: var(--gold-muted);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  --shadow-gold: 0 12px 30px color-mix(in oklab, var(--primary) 25%, transparent);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility section-shell {
+  width: min(1180px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+@utility display-title {
+  font-family: var(--font-display);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  line-height: 0.88;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa a navbar fixa (h-20) ao navegar por âncoras. */
+    scroll-padding-top: 5rem;
+    /* Evita salto de layout quando o menu mobile trava a rolagem (barra de rolagem clássica). */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}

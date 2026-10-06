@@ -1,107 +1,91 @@
-import Container from '../ui/Container'
-import { SITE, SOCIAL } from '../../lib/constants'
+import { ArrowRight, ArrowUp, MessageCircle } from 'lucide-react'
+import { contacts, footerColumns } from '../../data/content'
+import { InstagramIcon } from '../icons/InstagramIcon'
 
-const socialLinks = [
-  { ...SOCIAL.felipe, label: '@felipejjbarebarista' },
-  { ...SOCIAL.academy, label: '@jjbarebaristastore_academy' },
-  { ...SOCIAL.eventosBarista, label: '@jjbarebarista' },
-  { ...SOCIAL.eventosBar, label: '@jjbar_eventos' },
-]
+const socialLinkClass =
+  'grid size-11 place-items-center border border-border text-foreground transition hover:border-primary hover:text-primary'
 
-export default function Footer() {
+const columnTitleClass = 'mb-5 text-xs font-bold uppercase tracking-[0.2em] text-primary'
+// No mobile cada link tem 44px de altura de toque; a partir de lg volta ao espaçamento compacto.
+const footerLinkClass =
+  'inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-primary lg:min-h-0'
+const footerListClass = 'lg:space-y-3'
+
+export function Footer() {
   return (
-    <footer className="border-t border-[#C6A15B]/25 bg-[#F7F4EC] pb-24 pt-12 text-[#111111] sm:pt-16 lg:pb-16">
-      <Container>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
-          <div>
-            <div className="mb-3 flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#C6A15B] font-display text-sm font-bold text-[#9C7B3C]">
-                JJ
-              </span>
-              <span className="font-display text-sm font-semibold text-[#111111]">
-                {SITE.name}
-              </span>
-            </div>
-            <p className="text-sm leading-relaxed text-[#555555]">
-              Formação e especialização em Gelos Translúcidos, Mixologia, Coquetelaria e Universo de Bar.
-            </p>
-            <a
-              href={`https://${SITE.domain}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-block cursor-pointer text-sm font-medium text-[#9C7B3C] transition-colors duration-200 hover:text-[#B9922E]"
-            >
-              {SITE.domain}
+    <footer id="contato" className="border-t border-primary/30 pt-16 pb-8">
+      <div className="section-shell grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        {/* Marca */}
+        <div>
+          <a href="#inicio" className="inline-block text-xl font-extrabold uppercase leading-tight">
+            JJ Bar e Barista
+            <br />
+            <span className="text-primary">Store &amp; Academy</span>
+          </a>
+          <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">
+            Formação profissional para bartenders, baristas e empreendedores que querem transformar técnica em
+            oportunidade.
+          </p>
+          <div className="mt-6 flex gap-3">
+            <a href={contacts.instagram} aria-label="Instagram" target="_blank" rel="noreferrer" className={socialLinkClass}>
+              <InstagramIcon />
+            </a>
+            <a href={contacts.whatsapp} aria-label="WhatsApp" target="_blank" rel="noreferrer" className={socialLinkClass}>
+              <MessageCircle aria-hidden="true" />
             </a>
           </div>
+        </div>
 
-          <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#9C7B3C]">
-              Institucional
-            </h3>
-            <ul className="space-y-2.5 text-sm text-[#555555]">
-              <li>
-                <a href="#top" className="inline-flex min-h-11 cursor-pointer items-center transition-colors duration-200 hover:text-[#9C7B3C]">
-                  Termos de Uso
-                </a>
-              </li>
-              <li>
-                <a href="#top" className="inline-flex min-h-11 cursor-pointer items-center transition-colors duration-200 hover:text-[#9C7B3C]">
-                  Política de Privacidade
-                </a>
-              </li>
-              <li>
-                <a href="#top" className="inline-flex min-h-11 cursor-pointer items-center transition-colors duration-200 hover:text-[#9C7B3C]">
-                  Contato
-                </a>
-              </li>
-              <li>
-                <a href="#top" className="inline-flex min-h-11 cursor-pointer items-center transition-colors duration-200 hover:text-[#9C7B3C]">
-                  Suporte
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#9C7B3C]">
-              Redes Sociais
-            </h3>
-            <ul className="space-y-2.5 text-sm text-[#555555]">
-              {socialLinks.map((social) => (
-                <li key={social.handle + social.label}>
-                  <a
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 cursor-pointer items-center gap-2 transition-colors duration-200 hover:text-[#9C7B3C]"
-                  >
-                    <i className={`bi ${social.icon || 'bi-instagram'}`} aria-hidden="true" />
-                    {social.label}
+        {/* Colunas de navegação */}
+        {footerColumns.map((column) => (
+          <nav key={column.title} aria-label={column.title}>
+            <p className={columnTitleClass}>{column.title}</p>
+            <ul className={footerListClass}>
+              {column.links.map(({ href, label }) => (
+                <li key={href}>
+                  <a href={href} className={footerLinkClass}>
+                    {label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
+        ))}
 
-          <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#9C7B3C]">
-              JJ Bar &amp; Barista Academy
-            </h3>
-            <p className="text-sm leading-relaxed text-[#555555]">
-              © 2026 JJ Bar &amp; Barista Academy.
-              <br />
-              Todos os direitos reservados.
-            </p>
-          </div>
+        {/* Contato */}
+        <div>
+          <p className={columnTitleClass}>Fale com nossa equipe</p>
+          <ul className={footerListClass}>
+            <li>
+              <a href={contacts.whatsapp} target="_blank" rel="noreferrer" className={`gap-2 ${footerLinkClass}`}>
+                <MessageCircle className="size-4 text-primary" aria-hidden="true" /> WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={contacts.instagram} target="_blank" rel="noreferrer" className={`gap-2 ${footerLinkClass}`}>
+                <InstagramIcon className="size-4 text-primary" /> Instagram
+              </a>
+            </li>
+          </ul>
+          <p className="mt-4 text-xs text-muted-foreground">Site e contatos oficiais a confirmar</p>
+          <a
+            href="#oferta"
+            className="mt-6 inline-flex h-11 items-center gap-2 rounded-sm border border-primary px-5 text-xs font-bold uppercase tracking-wide text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+          >
+            Garanta sua vaga <ArrowRight className="size-4" aria-hidden="true" />
+          </a>
         </div>
+      </div>
 
-        <div className="divider-gold my-10" />
-
-        <p className="text-xs leading-relaxed text-[#777777]">
-          Resultados profissionais e de produção variam de acordo com cada aluno, prática, dedicação e materiais utilizados. O treinamento possui finalidade educacional e não representa garantia de ganhos imediatos.
-        </p>
-      </Container>
+      <div className="section-shell mt-14 flex flex-col-reverse gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs uppercase text-muted-foreground sm:text-[10px]">© 2026 JJ Bar e Barista Store &amp; Academy</p>
+        <a
+          href="#inicio"
+          className="inline-flex min-h-11 items-center gap-2 self-start text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary sm:self-auto"
+        >
+          Voltar ao topo <ArrowUp className="size-3.5" aria-hidden="true" />
+        </a>
+      </div>
     </footer>
   )
 }

@@ -1,80 +1,44 @@
-import Container from '../ui/Container'
-import SectionHeading from '../ui/SectionHeading'
-import Reveal from '../ui/Reveal'
-import { SOCIAL } from '../../lib/constants'
+import { Award } from 'lucide-react'
+import felipeMartins from '../../assets/images/felipe-martins.jpeg?w=480;960;1440&format=webp;jpg&as=picture'
+import { Picture } from '../ui/Picture'
+import { SectionHeading } from '../ui/SectionHeading'
 
-export default function Instructor() {
+export function Instructor() {
   return (
-    <section className="relative bg-white py-16 sm:py-24 lg:py-28 border-y border-[#C6A15B]/15">
-      <Container>
-        <SectionHeading
-          eyebrow="INSTRUTOR"
-          title="APRENDA COM QUEM VIVE O UNIVERSO DO BAR."
-          subtitle="Formação prática e direta ao ponto, desenvolvida por quem atua na formação e no serviço de coquetelaria."
-        />
-
-        <div className="mt-12 mx-auto max-w-4xl overflow-hidden rounded-3xl border border-[#C6A15B]/30 bg-[#FAF8F3] p-6 sm:p-10 shadow-soft">
-          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
-            {/* Foto Real */}
-            <div className="md:col-span-5">
-              <Reveal>
-                <div className="relative mx-auto max-w-xs overflow-hidden rounded-2xl border-2 border-[#C6A15B]/40 bg-white p-2 shadow-md">
-                  <div className="aspect-[3/4] overflow-hidden rounded-xl">
-                    <img
-                      src="/images/felipe martins.jpeg"
-                      alt="Felipe Martins - JJ Bar & Barista Academy"
-                      className="h-full w-full object-cover object-top"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* Biografia */}
-            <div className="flex flex-col items-start md:col-span-7">
-              <Reveal delay={0.1}>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#9C7B3C]">
-                  JJ Bar &amp; Barista Academy
-                </span>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#111111] mt-1">
-                  FELIPE MARTINS
-                </h3>
-              </Reveal>
-
-              <Reveal delay={0.16} className="mt-4 space-y-3.5 text-sm sm:text-base leading-relaxed text-[#444444]">
-                <p>
-                  Felipe Martins atua no universo de bar, café, eventos e formação profissional através da JJ Bar &amp; Barista Academy.
-                </p>
-                <p>
-                  Neste treinamento, o conhecimento prático é aplicado ao processo de produção e utilização de gelos translúcidos dentro da coquetelaria.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.22} className="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href={SOCIAL.felipe.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[#C6A15B]/50 bg-white px-4 py-2 text-xs font-semibold text-[#111111] shadow-sm transition-all hover:bg-[#FAF8F3] hover:text-[#9C7B3C]"
-                >
-                  <i className="bi bi-instagram text-[#9C7B3C]" aria-hidden="true" />
-                  {SOCIAL.felipe.handle}
-                </a>
-                <a
-                  href={SOCIAL.academy.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[#C6A15B]/50 bg-white px-4 py-2 text-xs font-semibold text-[#111111] shadow-sm transition-all hover:bg-[#FAF8F3] hover:text-[#9C7B3C]"
-                >
-                  <i className="bi bi-instagram text-[#9C7B3C]" aria-hidden="true" />
-                  {SOCIAL.academy.handle}
-                </a>
-              </Reveal>
-            </div>
+    <section id="instrutor" className="border-y border-border bg-card py-24">
+      <div className="section-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div className="relative mx-auto w-full max-w-md">
+          <Picture
+            picture={felipeMartins}
+            sizes="(min-width: 1024px) 448px, min(448px, 100vw - 2rem)"
+            alt="Felipe Martins, diretor da JJ Bar e Barista Store & Academy"
+            width={768}
+            height={1024}
+            loading="lazy"
+            className="aspect-[3/4] w-full object-cover grayscale-[15%]"
+          />
+          <div className="absolute -bottom-4 -right-4 border border-primary bg-background p-4">
+            <Award className="text-primary" aria-hidden="true" />
+            <p className="mt-2 text-xs font-bold uppercase">
+              Experiência real
+              <br />
+              em negócios
+            </p>
           </div>
         </div>
-      </Container>
+        <div>
+          <SectionHeading eyebrow="Quem será o seu instrutor">Felipe Martins</SectionHeading>
+          <p className="text-lg leading-8 text-foreground/75">
+            Diretor da JJ Bar e Barista Store &amp; Academy e dos segmentos de eventos JJ Bar e JJ Barista. Felipe
+            também lidera outros negócios desse universo, como o Black Chef, restaurante físico e gastronomia para
+            eventos, e a FG Store, que atua no e-commerce.
+          </p>
+          <p className="mt-5 border-l-2 border-primary pl-5 text-sm leading-7 text-muted-foreground">
+            Uma visão que combina técnica, operação, eventos e empreendedorismo para ensinar não apenas a produzir, mas
+            também a vender e crescer.
+          </p>
+        </div>
+      </div>
     </section>
   )
 }
