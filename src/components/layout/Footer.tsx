@@ -1,5 +1,5 @@
 import { ArrowRight, ArrowUp, MessageCircle } from 'lucide-react'
-import { contacts, footerColumns } from '../../data/content'
+import { contacts, footerColumns, instagramAccounts } from '../../data/content'
 import { InstagramIcon } from '../icons/InstagramIcon'
 
 const socialLinkClass =
@@ -14,9 +14,9 @@ const footerListClass = 'lg:space-y-3'
 export function Footer() {
   return (
     <footer id="contato" className="border-t border-primary/30 pt-16 pb-8">
-      <div className="section-shell grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div className="section-shell grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         {/* Marca */}
-        <div>
+        <div className="col-span-2 sm:col-span-1">
           <a href="#inicio" className="inline-block text-xl font-extrabold uppercase leading-tight">
             JJ Bar e Barista
             <br />
@@ -52,22 +52,27 @@ export function Footer() {
           </nav>
         ))}
 
-        {/* Contato */}
-        <div>
-          <p className={columnTitleClass}>Fale com nossa equipe</p>
-          <ul className={footerListClass}>
-            <li>
-              <a href={contacts.whatsapp} target="_blank" rel="noreferrer" className={`gap-2 ${footerLinkClass}`}>
-                <MessageCircle className="size-4 text-primary" aria-hidden="true" /> WhatsApp
-              </a>
-            </li>
-            <li>
-              <a href={contacts.instagram} target="_blank" rel="noreferrer" className={`gap-2 ${footerLinkClass}`}>
-                <InstagramIcon className="size-4 text-primary" /> Instagram
-              </a>
-            </li>
+        {/* Redes oficiais */}
+        <div className="col-span-2 sm:col-span-1">
+          <p className={columnTitleClass}>Redes oficiais</p>
+          <ul className="lg:space-y-2.5">
+            {instagramAccounts.map(({ name, handle, url }) => (
+              <li key={handle}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex min-h-11 items-center gap-2.5 lg:min-h-0"
+                >
+                  <InstagramIcon className="size-4 shrink-0 text-primary" />
+                  <span className="min-w-0 leading-tight">
+                    <span className="block text-sm text-foreground transition-colors group-hover:text-primary">{name}</span>
+                    <span className="block truncate text-xs text-muted-foreground">@{handle}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
           </ul>
-          <p className="mt-4 text-xs text-muted-foreground">Site e contatos oficiais a confirmar</p>
           <a
             href="#oferta"
             className="mt-6 inline-flex h-11 items-center gap-2 rounded-sm border border-primary px-5 text-xs font-bold uppercase tracking-wide text-primary transition-colors hover:bg-primary hover:text-primary-foreground"

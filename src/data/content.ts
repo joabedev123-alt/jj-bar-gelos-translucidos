@@ -81,6 +81,27 @@ export const testimonials = [
   },
 ]
 
+export const studentReviews = [
+  {
+    initials: 'MO',
+    name: 'Monique',
+    role: 'Noiva e Empresária',
+    text: 'Vocês arrasaram no meu casamento, sério, foi inesquecível, já quero fazer os cursos de vocês pra me tornar uma Bartender. Ou será uma empreendedora, pode? Hahaha. Oremos, ansiosa para começar.',
+  },
+  {
+    initials: 'GU',
+    name: 'Guilherme',
+    role: 'Bartender',
+    text: 'Fiz o curso presencial com o Felipe, com o Bob e o Ensei, valeu galera, primeiro curso da minha carreira e já foi uma atitude positiva na minha vida colocando em prática todos os aprendizados. Obrigado mestres!!!',
+  },
+  {
+    initials: 'VI',
+    name: 'Vitor',
+    role: 'Empresário de Eventos e Cafeteria',
+    text: 'Trabalhei na JJ depois montei meu próprio negócio. A JJ foi uma escola pra mim, cada evento, cada aprendizado, levo isso pra minha vida, além de valores, aprendi a ser um empreendedor na prática mesmo.',
+  },
+]
+
 export const faqs: [question: string, answer: string][] = [
   [
     'Preciso ter experiência como bartender?',
@@ -132,8 +153,16 @@ export const bonuses = [
 
 export const offerPerks = ['Conteúdo completo', 'Aulas práticas', '2 bônus exclusivos']
 
+export const instagramAccounts = [
+  { name: 'Felipe Martins', handle: 'felipejjbarebarista' },
+  { name: 'JJ Store & Academy', handle: 'jjbarebaristastore_academy' },
+  { name: 'JJ Bar & Barista', handle: 'jjbarebarista' },
+  { name: 'JJ Bar Eventos', handle: 'jjbar_eventos' },
+].map((account) => ({ ...account, url: `https://www.instagram.com/${account.handle}/` }))
+
 export const contacts = {
-  instagram: 'https://instagram.com',
+  // Perfil principal da escola (JJ Store & Academy).
+  instagram: instagramAccounts[1].url,
   whatsapp: 'https://wa.me/5500000000000',
 }
 

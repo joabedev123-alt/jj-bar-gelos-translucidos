@@ -45,7 +45,7 @@ export function MobileCtaBar() {
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground max-[359px]:hidden">
             Curso completo
           </p>
-          <p className="font-display text-2xl text-primary">
+          <p className="whitespace-nowrap font-display text-2xl text-primary">
             R$ 197<span className="text-base">,00</span>
           </p>
         </div>

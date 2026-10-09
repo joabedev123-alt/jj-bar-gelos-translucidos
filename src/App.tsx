@@ -10,6 +10,7 @@ import { Hero } from './components/sections/Hero'
 import { Instructor } from './components/sections/Instructor'
 import { Offer } from './components/sections/Offer'
 import { PainPoints } from './components/sections/PainPoints'
+import { StudentReviews } from './components/sections/StudentReviews'
 import { Testimonials } from './components/sections/Testimonials'
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
       <About />
       <Instructor />
       <Testimonials />
+      <StudentReviews />
       <Faq />
       <Offer />
       <FinalCta />
