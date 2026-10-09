@@ -8,7 +8,7 @@ const socialLinkClass =
 const columnTitleClass = 'mb-5 text-xs font-bold uppercase tracking-[0.2em] text-primary'
 // No mobile cada link tem 44px de altura de toque; a partir de lg volta ao espaçamento compacto.
 const footerLinkClass =
-  'inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-primary lg:min-h-0'
+  'inline-flex min-h-11 items-center py-1.5 text-sm leading-snug text-muted-foreground transition-colors hover:text-primary lg:min-h-0 lg:py-0 lg:leading-normal'
 const footerListClass = 'lg:space-y-3'
 
 export function Footer() {
