@@ -153,17 +153,32 @@ export const bonuses = [
 
 export const offerPerks = ['Conteúdo completo', 'Aulas práticas', '2 bônus exclusivos']
 
-export const instagramAccounts = [
-  { name: 'Felipe Martins', handle: 'felipejjbarebarista' },
-  { name: 'JJ Store & Academy', handle: 'jjbarebaristastore_academy' },
-  { name: 'JJ Bar & Barista', handle: 'jjbarebarista' },
-  { name: 'JJ Bar Eventos', handle: 'jjbar_eventos' },
-].map((account) => ({ ...account, url: `https://www.instagram.com/${account.handle}/` }))
+export type SocialAccount = {
+  name: string
+  handle: string
+  network: 'instagram' | 'youtube'
+  url: string
+}
+
+const instagram = (name: string, handle: string): SocialAccount => ({
+  name,
+  handle,
+  network: 'instagram',
+  url: `https://www.instagram.com/${handle}/`,
+})
+
+export const socialAccounts: SocialAccount[] = [
+  instagram('Felipe Martins', 'felipemartins.barebarista'),
+  instagram('Store e Academy', 'jjbarebaristastore_academy'),
+  instagram('Eventos Barista', 'jjbarebarista'),
+  instagram('Eventos de Bar', 'jjbar_eventos'),
+  { name: 'Canal no YouTube', handle: 'jjbarebarista', network: 'youtube', url: 'https://www.youtube.com/@jjbarebarista' },
+]
 
 export const contacts = {
-  // Perfil principal da escola (JJ Store & Academy).
-  instagram: instagramAccounts[1].url,
-  whatsapp: 'https://wa.me/5500000000000',
+  // Perfil principal da escola (Store e Academy).
+  instagram: socialAccounts[1].url,
+  youtube: socialAccounts[4].url,
 }
 
 export type NavLink = { href: `#${string}`; label: string }

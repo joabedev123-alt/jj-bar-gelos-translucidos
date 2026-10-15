@@ -1,6 +1,7 @@
-import { ArrowRight, ArrowUp, MessageCircle } from 'lucide-react'
-import { contacts, footerColumns, instagramAccounts } from '../../data/content'
+import { ArrowRight, ArrowUp } from 'lucide-react'
+import { contacts, footerColumns, socialAccounts } from '../../data/content'
 import { InstagramIcon } from '../icons/InstagramIcon'
+import { YoutubeIcon } from '../icons/YoutubeIcon'
 
 const socialLinkClass =
   'grid size-11 place-items-center border border-border text-foreground transition hover:border-primary hover:text-primary'
@@ -30,8 +31,8 @@ export function Footer() {
             <a href={contacts.instagram} aria-label="Instagram" target="_blank" rel="noreferrer" className={socialLinkClass}>
               <InstagramIcon />
             </a>
-            <a href={contacts.whatsapp} aria-label="WhatsApp" target="_blank" rel="noreferrer" className={socialLinkClass}>
-              <MessageCircle aria-hidden="true" />
+            <a href={contacts.youtube} aria-label="YouTube" target="_blank" rel="noreferrer" className={socialLinkClass}>
+              <YoutubeIcon />
             </a>
           </div>
         </div>
@@ -56,15 +57,19 @@ export function Footer() {
         <div className="col-span-2 sm:col-span-1">
           <p className={columnTitleClass}>Redes oficiais</p>
           <ul className="lg:space-y-2.5">
-            {instagramAccounts.map(({ name, handle, url }) => (
-              <li key={handle}>
+            {socialAccounts.map(({ name, handle, network, url }) => (
+              <li key={url}>
                 <a
                   href={url}
                   target="_blank"
                   rel="noreferrer"
                   className="group flex min-h-11 items-center gap-2.5 lg:min-h-0"
                 >
-                  <InstagramIcon className="size-4 shrink-0 text-primary" />
+                  {network === 'youtube' ? (
+                    <YoutubeIcon className="size-4 shrink-0 text-primary" />
+                  ) : (
+                    <InstagramIcon className="size-4 shrink-0 text-primary" />
+                  )}
                   <span className="min-w-0 leading-tight">
                     <span className="block text-sm text-foreground transition-colors group-hover:text-primary">{name}</span>
                     <span className="block truncate text-xs text-muted-foreground">@{handle}</span>
