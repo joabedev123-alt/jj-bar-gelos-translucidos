@@ -181,6 +181,8 @@ export const contacts = {
   youtube: socialAccounts[4].url,
 }
 
+export const checkoutUrl = 'https://pay.hotmart.com/A107828750X'
+
 export type NavLink = { href: `#${string}`; label: string }
 
 export const navLinks: NavLink[] = [

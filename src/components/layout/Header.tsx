@@ -1,6 +1,6 @@
 import { ArrowRight, Menu, X } from 'lucide-react'
 import { useEffect, useState, type MouseEvent } from 'react'
-import { navLinks } from '../../data/content'
+import { checkoutUrl, navLinks } from '../../data/content'
 import { useActiveSection } from '../../hooks/useActiveSection'
 
 // Inclui "oferta" para que nenhum link fique ativo enquanto o usuário está na oferta.
@@ -52,11 +52,11 @@ export function Header() {
           : 'border-foreground/10 bg-background/40 backdrop-blur-sm'
       }`}
     >
-      <div className="section-shell flex h-20 items-center justify-between gap-6">
+      <div className="section-shell flex h-[var(--header-offset)] items-center justify-between gap-3 pt-[env(safe-area-inset-top,0px)] sm:gap-6">
         <a
           href="#inicio"
           onClick={() => setOpen(false)}
-          className="max-w-48 py-1.5 text-sm font-extrabold uppercase leading-tight text-foreground sm:max-w-none"
+          className="min-w-0 max-w-[12.5rem] py-1.5 text-[13px] font-extrabold uppercase leading-tight text-foreground sm:max-w-none sm:text-sm"
         >
           JJ Bar e Barista <span className="text-primary">Store &amp; Academy</span>
         </a>
@@ -84,7 +84,9 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#oferta"
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden h-10 items-center gap-2 rounded-sm bg-primary px-5 text-xs font-bold uppercase tracking-wide text-primary-foreground shadow-gold transition-colors hover:bg-primary-bright sm:inline-flex"
           >
             Garanta sua vaga <ArrowRight className="size-4" aria-hidden="true" />
@@ -106,10 +108,10 @@ export function Header() {
       <div
         id="menu-mobile"
         className={`overflow-hidden border-border bg-background transition-[max-height,opacity,visibility] duration-300 lg:hidden ${
-          open ? 'visible max-h-[calc(100dvh-5rem)] border-t opacity-100' : 'invisible max-h-0 opacity-0'
+          open ? 'visible max-h-[calc(100dvh-var(--header-offset))] border-t opacity-100' : 'invisible max-h-0 opacity-0'
         }`}
       >
-        <nav aria-label="Navegação mobile" className="section-shell flex max-h-[calc(100dvh-5rem)] flex-col overflow-y-auto py-6">
+        <nav aria-label="Navegação mobile" className="section-shell flex max-h-[calc(100dvh-var(--header-offset))] flex-col overflow-y-auto pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
           <ul>
             {navLinks.map(({ href, label }, i) => {
               const isActive = active === href.slice(1)
@@ -131,9 +133,11 @@ export function Header() {
             })}
           </ul>
           <a
-            href="#oferta"
-            onClick={(e) => goTo(e, '#oferta')}
-            className="mt-6 inline-flex h-14 items-center justify-center gap-2 rounded-sm bg-primary px-7 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-gold transition-colors hover:bg-primary-bright"
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-sm bg-primary px-5 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-gold transition-colors hover:bg-primary-bright"
           >
             Garanta sua vaga <ArrowRight className="size-4" aria-hidden="true" />
           </a>

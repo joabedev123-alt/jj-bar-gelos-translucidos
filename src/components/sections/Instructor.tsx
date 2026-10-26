@@ -5,7 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function Instructor() {
   return (
-    <section id="instrutor" className="border-y border-border bg-card py-24">
+    <section id="instrutor" className="border-y border-border bg-card py-16 sm:py-24">
       <div className="section-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <div className="relative mx-auto w-full max-w-md">
           <Picture
@@ -17,7 +17,7 @@ export function Instructor() {
             loading="lazy"
             className="aspect-[3/4] w-full object-cover grayscale-[15%]"
           />
-          <div className="absolute -bottom-4 -right-4 border border-primary bg-background p-4">
+          <div className="absolute right-3 bottom-3 border border-primary bg-background p-4 sm:-right-4 sm:-bottom-4">
             <Award className="text-primary" aria-hidden="true" />
             <p className="mt-2 text-xs font-bold uppercase">
               Experiência real

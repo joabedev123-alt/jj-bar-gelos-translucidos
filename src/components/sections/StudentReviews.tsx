@@ -2,17 +2,19 @@ import { studentReviews } from '../../data/content'
 
 export function StudentReviews() {
   return (
-    <section id="alunos" className="border-y border-border bg-card py-24">
+    <section id="alunos" className="border-y border-border bg-card py-16 sm:py-24">
       <div className="section-shell">
-        <div className="mb-12 flex items-center justify-center gap-4 sm:gap-6">
-          <span className="h-px w-8 bg-primary/60 sm:w-16" aria-hidden="true" />
-          <h2 className="display-title text-center text-4xl text-foreground sm:text-6xl">O que dizem nossos alunos</h2>
-          <span className="h-px w-8 bg-primary/60 sm:w-16" aria-hidden="true" />
+        <div className="mb-8 flex items-center justify-center gap-4 sm:mb-12 sm:gap-6">
+          <span className="hidden h-px w-16 bg-primary/60 sm:block" aria-hidden="true" />
+          <h2 className="display-title text-center text-[2.35rem] text-foreground min-[380px]:text-4xl sm:text-6xl">
+            O que dizem nossos alunos
+          </h2>
+          <span className="hidden h-px w-16 bg-primary/60 sm:block" aria-hidden="true" />
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
           {studentReviews.map(({ initials, name, role, text }) => (
-            <figure key={name} className="flex flex-col border border-border bg-background p-7">
+            <figure key={name} className="flex flex-col border border-border bg-background p-5 sm:p-7">
               {/* O glifo ” fica no topo da caixa da fonte; a margem negativa remove o vazio abaixo dele. */}
               <span className="-mb-5 font-display text-6xl leading-none text-primary" aria-hidden="true">
                 ”

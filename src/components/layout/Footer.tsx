@@ -1,5 +1,5 @@
 import { ArrowRight, ArrowUp } from 'lucide-react'
-import { contacts, footerColumns, socialAccounts } from '../../data/content'
+import { checkoutUrl, contacts, footerColumns, socialAccounts } from '../../data/content'
 import { InstagramIcon } from '../icons/InstagramIcon'
 import { YoutubeIcon } from '../icons/YoutubeIcon'
 
@@ -14,7 +14,7 @@ const footerListClass = 'lg:space-y-3'
 
 export function Footer() {
   return (
-    <footer id="contato" className="border-t border-primary/30 pt-16 pb-8">
+    <footer id="contato" className="border-t border-primary/30 pt-16 pb-[max(2rem,env(safe-area-inset-bottom))]">
       <div className="section-shell grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         {/* Marca */}
         <div className="col-span-2 sm:col-span-1">
@@ -79,7 +79,9 @@ export function Footer() {
             ))}
           </ul>
           <a
-            href="#oferta"
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 inline-flex h-11 items-center gap-2 rounded-sm border border-primary px-5 text-xs font-bold uppercase tracking-wide text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             Garanta sua vaga <ArrowRight className="size-4" aria-hidden="true" />

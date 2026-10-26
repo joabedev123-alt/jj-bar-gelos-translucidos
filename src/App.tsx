@@ -15,7 +15,7 @@ import { Testimonials } from './components/sections/Testimonials'
 
 export default function App() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="bg-background pb-[calc(5.25rem+env(safe-area-inset-bottom,0px))] text-foreground sm:pb-0">
       <Header />
       <Hero />
       <PainPoints />

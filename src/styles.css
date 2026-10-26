@@ -3,6 +3,8 @@
 /* Tokens extraídos do stylesheet original (Lovable / Tailwind v4). */
 :root {
   --radius: 0.25rem;
+  /* Navbar fixa + área segura do notch. */
+  --header-offset: calc(5rem + env(safe-area-inset-top, 0px));
   --background: oklch(11.5% 0.005 70);
   --foreground: oklch(94% 0.01 80);
   --card: oklch(16% 0.009 70);
@@ -79,6 +81,13 @@
   margin-inline: auto;
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @utility display-title {
   font-family: var(--font-display);
   letter-spacing: 0;
@@ -93,10 +102,17 @@
 
   html {
     scroll-behavior: smooth;
-    /* Compensa a navbar fixa (h-20) ao navegar por âncoras. */
-    scroll-padding-top: 5rem;
+    /* Compensa a navbar fixa ao navegar por âncoras. */
+    scroll-padding-top: var(--header-offset);
+    scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
     /* Evita salto de layout quando o menu mobile trava a rolagem (barra de rolagem clássica). */
     scrollbar-gutter: stable;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-bottom: 0;
+    }
   }
 
   body {
@@ -104,7 +120,33 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     letter-spacing: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+  }
+
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   ::selection {

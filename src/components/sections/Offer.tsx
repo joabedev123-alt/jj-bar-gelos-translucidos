@@ -1,15 +1,17 @@
 import { Check } from 'lucide-react'
-import { bonuses, offerItems, offerPerks, offerTotal } from '../../data/content'
+import { bonuses, checkoutUrl, offerItems, offerPerks, offerTotal } from '../../data/content'
 import { CourseButton } from '../ui/CourseButton'
 
 export function Offer() {
   return (
-    <section id="oferta" className="py-24">
+    <section id="oferta" className="py-16 sm:py-24">
       <div className="section-shell">
-        <div className="mx-auto max-w-4xl border border-primary/60 bg-card p-6 shadow-gold sm:p-12">
+        <div className="mx-auto max-w-4xl border border-primary/60 bg-card p-5 shadow-gold sm:p-12">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Oferta especial</p>
-            <h2 className="display-title mt-3 text-4xl sm:text-6xl">Você vai decidir agora ou deixar para depois?</h2>
+            <h2 className="display-title mt-3 text-[2.35rem] min-[380px]:text-4xl sm:text-6xl">
+              Você vai decidir agora ou deixar para depois?
+            </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
               A chance de rentabilizar com gelos translúcidos, valorizar seu negócio ou abrir sua própria empresa
               começa com conhecimento e prática.
@@ -32,8 +34,8 @@ export function Offer() {
           <div className="border-y border-primary/30 py-8 text-center">
             <p className="text-sm font-bold uppercase text-primary">Hoje você não vai gastar tudo isso</p>
             <p className="mt-2 text-sm text-muted-foreground">Curso completo por apenas</p>
-            <div className="my-3 font-display text-7xl text-primary sm:text-8xl">
-              R$ 197<span className="text-3xl">,00</span>
+            <div className="my-3 font-display text-5xl text-primary min-[400px]:text-6xl sm:text-8xl">
+              R$ 197<span className="text-2xl sm:text-3xl">,00</span>
             </div>
             <p className="text-xs text-muted-foreground">Pagamento único</p>
           </div>
@@ -49,7 +51,7 @@ export function Offer() {
           </div>
 
           <div className="text-center">
-            <CourseButton href="#contato">Quero aprender agora</CourseButton>
+            <CourseButton href={checkoutUrl}>Quero aprender agora</CourseButton>
             <div className="mt-5 flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
               {offerPerks.map((perk) => (
                 <span key={perk} className="flex items-center gap-1">

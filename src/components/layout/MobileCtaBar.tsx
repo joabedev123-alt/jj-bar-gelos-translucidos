@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { checkoutUrl } from '../../data/content'
 
 /**
  * Barra de CTA fixa no rodapé da tela, apenas em celulares (< sm).
@@ -50,8 +51,10 @@ export function MobileCtaBar() {
           </p>
         </div>
         <a
-          href="#oferta"
-          className="inline-flex h-12 shrink-0 items-center gap-2 rounded-sm bg-primary px-5 text-xs font-bold uppercase tracking-wide text-primary-foreground shadow-gold transition-colors hover:bg-primary-bright"
+          href={checkoutUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-12 shrink-0 items-center gap-1.5 rounded-sm bg-primary px-3.5 text-[11px] font-bold uppercase tracking-wide text-primary-foreground shadow-gold transition-colors hover:bg-primary-bright min-[380px]:gap-2 min-[380px]:px-5 min-[380px]:text-xs"
         >
           Garanta sua vaga <ArrowRight className="size-4" aria-hidden="true" />
         </a>
